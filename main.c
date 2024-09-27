@@ -27,11 +27,9 @@
 
 
      etudiant List[5000];
+     etudiant tri[5000];
      Departement list[5000];
      Departement Note[5000];
-
-     char list2[10000000];
-     char list3[10000000];
      int c=0;
 
  void AjouterAuto(){
@@ -251,12 +249,34 @@
             printf("\n");
             printf("           :=====>>  Entre la date de naissance de l'etudiant \n");
             printf("           |\n");
-            printf("           |===>>  Entre les jours     xx : ");
-            scanf("%d",&List[c].day);
+            do{
+               printf("           |===>>  Entre les jours     xx : ");
+               scanf("%d",&List[c].day);
+               if(List[c].day > 31 || List[c].day < 1 || List[c].day  ){
+                    printf("           |===>> Enrer a valide date ! \n");
+                }else{
+                    break;
+                }
+
+              }while(1);
+              do{
             printf("           |===>>  Entre les mois      xx : ");
             scanf("%d",&List[c].month);
-            printf("           |===>>  Entre les annees  XXXX : ");
+            if(List[c].month > 12 || List[c].month < 1){
+                    printf("           |===>> Enrer a valide mois ! \n");
+                }else{
+                    break;
+                }
+            }while(1);
+            do{
+            printf("           |===>>  Entre les annee  XXXX : ");
             scanf("%d",&List[c].year);
+            if(List[c].year > 2007 || List[c].year <= 1980){
+                    printf("           |===>> Enrer a valide annee ! \n");
+            }else{
+                    break;
+                }
+            }while(1);
             printf("           |\n");
             if (List[c].day >= 10 && List[c].month >= 10){
             printf("           :=====>>  La Date de naissance de l'etudiant est le ---- : %d/%d/%d ",List[c].day,List[c].month,List[c].year);
@@ -268,7 +288,7 @@
             printf("\n\n");
             printf("       =====>>  Entre le departement de l'etudiant : \n\n");
             printf("           =====>>  Pour le departement Informatique taper - : 1\n");
-            printf("           =====>>  Pour le departement Mathematique taper --- : 2\n");
+            printf("           =====>>  Pour le departement Mathematique taper - : 2\n");
             printf("           =====>>  Pour le departement chimique taper ----- : 3\n");
             printf("           =====>>  Pour le departement Phisique taper ----- : 4\n");
             printf("             |\n");
@@ -349,6 +369,7 @@ void afficher(){
  void Modifier(){
      etudiant List1[3];
      int p;
+     int h;
      if(c!=0){
           printf("              =====>> entre l'identifiant d'etudiant : ");
           scanf("%d",&p);
@@ -363,8 +384,8 @@ void afficher(){
             printf("       =====>>  l'identifiant de l'etudiant  ---------------- : %d \n",List[i].identifiant);
             printf("\n");
             printf("       =====>>  Entre le nom de l'etudiant ------------------ : ");
-            scanf("%s",List1[i].nom);
-        strcpy(List[i].nom , List1[i].nom);
+            scanf("%s",List[i].nom);
+        strcpy(List1[i].nom , List[i].nom);
             printf("\n");
             printf("       =====>>  Entre le prenom de l'etudiant --------------- : ");
             scanf("%s",List1[i].prenom);
@@ -372,12 +393,34 @@ void afficher(){
             printf("\n");
             printf("           :=====>>  Entre la date de naissance de l'etudiant \n");
             printf("           |\n");
-            printf("           |===>>  Entre les jours     xx : ");
-            scanf("%d",&List1[i].day);
+            do{
+               printf("           |===>>  Entre les jours     xx : ");
+               scanf("%d",&List[i].day);
+               if(List[i].day > 31 || List[i].day < 1){
+                    printf("           |===>> Enrer a valide date ! \n");
+                }else{
+                    break;
+                }
+
+              }while(1);
+              do{
             printf("           |===>>  Entre les mois      xx : ");
-            scanf("%d",&List1[i].month);
-            printf("           |===>>  Entre les annees  XXXX : ");
-            scanf("%d",&List1[i].year);
+            scanf("%d",&List[i].month);
+            if(List[i].month > 12 || List[i].month < 1){
+                    printf("           |===>> Enrer a valide mois ! \n");
+                }else{
+                    break;
+                }
+            }while(1);
+            do{
+            printf("           |===>>  Entre les annee  XXXX : ");
+            scanf("%d",&List[i].year);
+            if(List[i].year > 2007){
+                    printf("           |===>> Enrer a valide annee ! \n");
+                }else{
+                    break;
+                }
+            }while(1);
             printf("           |\n");
         List[i].day = List1[i].day;
         List[i].month = List1[i].month;
@@ -389,6 +432,29 @@ void afficher(){
             }else if (List1[i].day <= 9 && List1[i].month >= 10){
             printf("           :=====>>  La Date de naissance de l'etudiant est le ---- : !! 0%d/%d/%d !! ",List1[i].day,List1[i].month,List1[i].year);
             }else {printf("           :=====>>  La Date de naissance de l'etudiant est le ---- : !! 0%d/0%d/%d !! ",List1[i].day,List1[i].month,List1[i].year);}
+            printf("\n\n");
+            printf("       =====>>  Entre le departement de l'etudiant : \n\n");
+            printf("           =====>>  Pour le departement Informatique taper - : 1\n");
+            printf("           =====>>  Pour le departement Mathematique taper - : 2\n");
+            printf("           =====>>  Pour le departement chimique taper ----- : 3\n");
+            printf("           =====>>  Pour le departement Phisique taper ----- : 4\n");
+            printf("             |\n");
+            printf("             :=====>> Taper le nombre ici : ");
+            scanf("%d",&h);
+            switch(h){
+            case 1:
+                strcpy(list[i].identifiant ,"Informatique");
+                break;
+            case 2:
+                strcpy(list[i].identifiant ,"Mathematique");
+                break;
+            case 3:
+                strcpy(list[i].identifiant ,"chimique");
+                break;
+            case 4:
+                strcpy(list[i].identifiant ,"Phisique");
+                break;
+                }
             printf("\n\n");
             printf("       =====>>  Entre la note generale de l'etudiant  -------------- : ");
             scanf("%f",&List1[i].NoteGenerale);
@@ -426,6 +492,7 @@ void afficher(){
   }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
  }
  void Statistiques(){
+     if(c!=0){
      printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
      printf("\n\n");
      printf("              =====>>  Voila les statistiques et informatins de l'etudiant ");
@@ -588,9 +655,11 @@ void afficher(){
      printf("\n\n");
      printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
      printf("\n\n");
+     }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
  }
  void RechercherI(){
      char nom1[20];
+     if(c!=0){
      printf("              =====>> entre le nom d'etudiant : ");
           scanf("%s",nom1);
           printf("\n\n");
@@ -622,9 +691,11 @@ void afficher(){
             printf("\n\n");
         }
      }
+     }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
 
  }
  void RechercherI2(){
+     if(c!=0){
      printf("\n");
      printf("       =====>>  Les etudiants de departement Informatique .\n\n\n");
      for( int k100 = 0 ; k100 <= c ; k100++ ){
@@ -745,7 +816,145 @@ void afficher(){
             printf("\n\n");
                 }
         }
+        }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
 
+ }
+ void tri1(){
+          if(c!=0){
+     for(int i=0; i<c ; i++){
+        for(int j=0; j<c-i-1 ; j++){
+            if (strcmp(List[j].nom,List[j+1].nom) > 0)
+            {
+                etudiant List10 = List[j];
+                etudiant List11 = tri[j];
+             Departement List12 = list[j];
+             Departement List13 = Note[j];
+                        List[j] = List[j+1];
+                         tri[j] = tri[j+1];
+                        list[j] = list[j+1];
+                        Note[j] = Note[j+1];
+
+                       List[j+1] = List10;
+                        tri[j+1] = List11;
+                       list[j+1] = List12;
+                       Note[j+1] = List13;
+            }
+
+        }
+     }
+      for(int i2=0; i2<c ; i2++){
+            printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+            printf("              =====>>  Voila les informatin de l'etudiant ");
+            printf("\n\n");
+            printf("       =====>>  l'identifiant de l'etudiant  ---------------------- : %d \n",List[i2].identifiant);
+            printf("\n");
+            printf("       =====>>  le nom de l'etudiant ------------------------------ : %s",List[i2].nom);
+            printf("\n\n");
+            printf("       =====>>  le prenom de l'etudiant --------------------------- : %s",List[i2].prenom);
+            printf("\n\n");
+            if (List[i2].day >= 10 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day >= 10 && List[i2].month <= 9){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day <= 9 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else {printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);}
+            printf("\n\n");
+            printf("       =====>>  le departement choisir est ------------------------ : %s",list[i2].identifiant);
+            printf("\n\n");
+            printf("       =====>>  la note generale de l'etudiant  ------------------- : %.2f",List[i2].NoteGenerale);
+            printf("\n\n");
+            printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+      }
+          }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
+ }
+
+ void tri2(){
+     if(c!=0){
+     for(int i=0; i<c ; i++){
+        for(int j=0; j<c-i-1 ; j++){
+            if ( List[j].NoteGenerale > List[j+1].NoteGenerale )
+            {
+                etudiant List10 = List[j];
+                etudiant List11 = tri[j];
+             Departement List12 = list[j];
+             Departement List13 = Note[j];
+                        List[j] = List[j+1];
+                         tri[j] = tri[j+1];
+                        list[j] = list[j+1];
+                        Note[j] = Note[j+1];
+
+                       List[j+1] = List10;
+                        tri[j+1] = List11;
+                       list[j+1] = List12;
+                       Note[j+1] = List13;
+            }
+
+        }
+     }
+      for(int i2=0; i2<c ; i2++){
+            printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+            printf("              =====>>  Voila les informatin de l'etudiant ");
+            printf("\n\n");
+            printf("       =====>>  l'identifiant de l'etudiant  ---------------------- : %d \n",List[i2].identifiant);
+            printf("\n");
+            printf("       =====>>  le nom de l'etudiant ------------------------------ : %s",List[i2].nom);
+            printf("\n\n");
+            printf("       =====>>  le prenom de l'etudiant --------------------------- : %s",List[i2].prenom);
+            printf("\n\n");
+            if (List[i2].day >= 10 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day >= 10 && List[i2].month <= 9){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day <= 9 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else {printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);}
+            printf("\n\n");
+            printf("       =====>>  le departement choisir est ------------------------ : %s",list[i2].identifiant);
+            printf("\n\n");
+            printf("       =====>>  la note generale de l'etudiant  ------------------- : %.2f",List[i2].NoteGenerale);
+            printf("\n\n");
+            printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+            }
+        }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
+ }
+
+ void tri4(){
+     if(c!=0){
+
+     for( int i2 = 0 ; i2 <= c ; i2++ ){
+            if(List[i2].NoteGenerale >=10){
+                    printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+            printf("              =====>>  Voila les informatin de l'etudiant ");
+            printf("\n\n");
+            printf("       =====>>  l'identifiant de l'etudiant  ---------------------- : %d \n",List[i2].identifiant);
+            printf("\n");
+            printf("       =====>>  le nom de l'etudiant ------------------------------ : %s",List[i2].nom);
+            printf("\n\n");
+            printf("       =====>>  le prenom de l'etudiant --------------------------- : %s",List[i2].prenom);
+            printf("\n\n");
+            if (List[i2].day >= 10 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day >= 10 && List[i2].month <= 9){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : %d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else if (List[i2].day <= 9 && List[i2].month >= 10){
+            printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/%d/%d ",List[i2].day,List[i2].month,List[i2].year);
+            }else {printf("           =====>>  La Date de naissance de l'etudiant est le ----- : 0%d/0%d/%d ",List[i2].day,List[i2].month,List[i2].year);}
+            printf("\n\n");
+            printf("       =====>>  le departement choisir est ------------------------ : %s",list[i2].identifiant);
+            printf("\n\n");
+            printf("       =====>>  la note generale de l'etudiant  ------------------- : %.2f",List[i2].NoteGenerale);
+            printf("\n\n");
+            printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            printf("\n\n");
+                }
+        }
+     }else {printf("       =====>>  Pas encore des etudiants enregistre pour afficher !!!\n\n\n");}
  }
  int main ()
 
@@ -756,8 +965,8 @@ int choix,z;
          printf("\n\n");
 printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 printf("|\n");printf("|\n");
-printf("|               ----------------- Systeme de Gestion de Contacts -----------------");
-printf("                        |\n");printf("|\n");
+printf("|         ----------------- Systeme de Gestion d'etudiants dans l'universite -----------------");
+printf("            |\n");printf("|\n");
 printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 printf("|\n");printf("|       |\n");printf("|       |\n");
 
@@ -768,7 +977,8 @@ printf("|       |===>> Pour Supprimer un etudiant taper ------------------------
 printf("|       |===>> Pour Les statistique de l'universite taper ----------------------------------------- : 5\n|       |\n");
 printf("|       |===>> Pour Rechercher un etudiant par son nom taper -------------------------------------- : 6\n|       |\n");
 printf("|       |===>> Pour Afficher la liste des etudiants inscrits dans un departement specifique taper - : 7\n|       |\n");
-printf("|       |===>> Pour AjouterAuto des etudiant taper ------------------------------------------------ : 8\n|       |\n");
+printf("|       |===>> Pour Trier les etudiant taper ------------------------------------------------------ : 8\n|       |\n");
+printf("|       |===>> Pour AjouterAuto des etudiant taper ------------------------------------------------ : 9\n|       |\n");
 printf("|--------------------------------------------------------------------------------------------------------|");
 printf("\n\n");
 printf("                 ===>> Taper le numero ici : ");
@@ -797,6 +1007,29 @@ printf("\n\n");
              RechercherI2();
         break;
           case 8:
+             printf("\n\n");
+             printf("             ===>> Tri alphabetique des etudiants -------------------- : 1\n");
+             printf("             ===>> Tri avec note generale des etudiants -------------- : 2\n");
+             printf("             ===>> Tri des etudiants selon leur statut de reussite --- : 3\n");
+             printf("\n\n");
+             printf("                 ===>> Taper le numero ici : ");
+             scanf("%d",&z);
+             printf("\n\n");
+             switch(z){
+                 case 1:
+                   tri1();
+              break;
+                 case 2:
+                   tri2();
+              break;
+                 case 3:
+                   tri4();
+              break;
+             }
+
+        break;
+
+          case 9:
              AjouterAuto();
         break;
 
